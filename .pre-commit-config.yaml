@@ -77,6 +77,10 @@ repos:
     rev: v2.17.2
     hooks:
       - id: pylint
+        name: pylint
+        entry: python -m pylint
+        language: python
+        types: [python]
         args:
             [   '--jobs=4',
                 '--disable=all',
