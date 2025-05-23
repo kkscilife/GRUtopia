@@ -39,3 +39,55 @@ repos:
         args: ["--remove"]
       - id: mixed-line-ending
         args: ["--fix=lf"]
+      - id: detect-private-key
+      - id: check-json
+  - repo: https://github.com/executablebooks/mdformat
+    rev: 0.7.9
+    hooks:
+      - id: mdformat
+        args: ["--number", "--table-width", "200"]
+        additional_dependencies:
+            - mdformat-openmmlab
+            - mdformat_frontmatter
+            - linkify-it-py
+  - repo: https://github.com/myint/docformatter
+    rev: v1.3.1
+    hooks:
+      - id: docformatter
+        args: ["--in-place", "--wrap-descriptions", "79"]
+  - repo: https://github.com/jackdewinter/pymarkdown
+    rev: v0.9.27
+    hooks:
+      - id: pymarkdown
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.14.1
+    hooks:
+      - id: mypy
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.23.1
+    hooks:
+      - id: gitleaks
+        entry: "gitleaks dir"
+        args: [
+          "--verbose",
+          "--redact=50"
+        ]
+  - repo: https://github.com/PyCQA/pylint/
+    rev: v2.17.2
+    hooks:
+      - id: pylint
+        name: pylint
+        entry: pylint
+        language: system
+        types: [python]
+        require_serial: false
+        args:
+            [   '--jobs=4',
+                '--disable=all',
+                '--enable=E,F'
+            ]
+  - repo: https://github.com/tcort/markdown-link-check
+    rev: v3.12.2
+    hooks:
+      - id: markdown-link-check
+        args: [-q,-c, .github/md-link-config.json]
