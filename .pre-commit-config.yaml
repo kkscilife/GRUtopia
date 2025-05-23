@@ -81,7 +81,6 @@ repos:
         entry: pylint
         language: system
         types: [python]
-        require_serial: false
         args:
             [   '--jobs=4',
                 '--disable=all',
