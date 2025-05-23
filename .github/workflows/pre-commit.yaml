@@ -2,8 +2,8 @@ name: Run linters using pre-commit
 
 on:
   pull_request:
-  push:
     branches: [main]
+  push:
 
 jobs:
   pre-commit:
