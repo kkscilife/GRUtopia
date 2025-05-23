@@ -73,12 +73,12 @@ repos:
           "--verbose",
           "--redact=50"
         ]
-  - repo: https://github.com/PyCQA/pylint/
+  - repo: https://github.com/pylint-dev/pylint
     rev: v2.17.2
     hooks:
       - id: pylint
         name: pylint
-        entry: python -m pylint
+        entry: pylint
         language: python
         types: [python]
         args:
