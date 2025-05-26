@@ -8,15 +8,17 @@ on:
 jobs:
   pre-commit:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        pyvn: ["3.8","3.9","3.10","3.11"]
     steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-python@v4
       with:
-        python-version: "3.9"
+        python-version: ${{ matrix.pyvn }}
     - name: pre-commit
       run : |
         python --version
-        pip install pre-commit==3.4.0
         pre-commit install
         pre-commit clean
         pre-commit run --all-files
